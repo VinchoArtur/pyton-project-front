@@ -1,15 +1,19 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {MainPageComponent} from './components/main-page/main-page.component';
-import {AppComponent} from './app.component';
+import {HolidayComponent} from './components/holiday/holiday.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'main', pathMatch: 'full'},
-  {path: 'main', component: MainPageComponent}
+  {path: 'main', component: MainPageComponent, children: [
+      {path: 'holiday', component: HolidayComponent},
+      {path: 'about', component: HolidayComponent},
+    ]},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

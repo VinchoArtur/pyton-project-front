@@ -1,4 +1,3 @@
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
@@ -10,20 +9,27 @@ import {
   NbButtonModule,
   NbCardModule,
   NbLayoutModule,
-  NbListModule, NbMenuModule,
+  NbListModule,
+  NbMenuModule,
   NbMenuService,
   NbSidebarModule,
   NbSidebarService,
   NbThemeModule
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
-import {NbMenuInternalService} from '@nebular/theme/components/menu/menu.service';
+import {HolidayComponent} from './components/holiday/holiday.component';
+import {appReducers} from './store/holidays.store';
+import {StoreModule} from '@ngrx/store';
+import {HolidayEffects} from './store/effects/holidays.effects';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    SidebarComponent
+    SidebarComponent,
+    HolidayComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,10 @@ import {NbMenuInternalService} from '@nebular/theme/components/menu/menu.service
     NbSidebarModule,
     NbButtonModule,
     NbCardModule,
-    NbListModule
+    NbListModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([HolidayEffects]),
+    StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
   ],
   providers: [NbSidebarService, NbMenuService],
   bootstrap: [AppComponent]
