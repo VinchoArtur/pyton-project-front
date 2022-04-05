@@ -1,0 +1,14 @@
+<nb-card [size]="'medium'">
+  <nb-card-body>
+    <nb-list>
+      <div *ngFor="let menuItem of menuItems" class="control-panel">
+        <button nbButton status="primary">
+          {{ menuItem }}
+        </button>
+        <button>
+          {{menuItem}}
+        </button>
+      </div>
+    </nb-list>
+  </nb-card-body>
+</nb-card>
