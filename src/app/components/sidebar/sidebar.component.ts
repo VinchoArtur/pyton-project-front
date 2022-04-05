@@ -9,12 +9,12 @@ import {NbMenuItem} from '@nebular/theme';
 export class SidebarComponent implements OnInit {
   items: NbMenuItem[] = [
     {
-      title: 'home',
-      link: '/'
+      title: 'Holiday',
+      link: 'holiday',
     },
     {
-      title: 'dashboard',
-      link: 'dashboard'
+      title: 'About',
+      link: 'about'
     }
   ];
 
