@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NbMenuItem} from '@nebular/theme';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  menuItems: string[] = ['Главная', 'О проекте', 'Информация'];
+  items: NbMenuItem[] = [
+    {
+      title: 'home',
+      link: '/'
+    },
+    {
+      title: 'dashboard',
+      link: 'dashboard'
+    }
+  ];
 
   constructor() { }
 

@@ -1,21 +1,23 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {MainPageComponent} from './components/main-page/main-page.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  NbThemeModule,
-  NbLayoutModule,
-  NbSidebarModule,
   NbButtonModule,
-  NbSidebarService,
+  NbCardModule,
+  NbLayoutModule,
+  NbListModule, NbMenuModule,
   NbMenuService,
-  NbCardModule, NbListModule
+  NbSidebarModule,
+  NbSidebarService,
+  NbThemeModule
 } from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { MainPageComponent } from './components/main-page/main-page.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {NbEvaIconsModule} from '@nebular/eva-icons';
+import {NbMenuInternalService} from '@nebular/theme/components/menu/menu.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({name: 'default'}),
+    NbMenuModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
     NbSidebarModule,
@@ -38,4 +41,5 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   providers: [NbSidebarService, NbMenuService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
