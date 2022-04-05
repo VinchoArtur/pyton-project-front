@@ -23,13 +23,16 @@ import {StoreModule} from '@ngrx/store';
 import {HolidayEffects} from './store/effects/holidays.effects';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import {AboutComponent} from './components/about/about.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     SidebarComponent,
-    HolidayComponent
+    HolidayComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([HolidayEffects]),
     StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
+    HttpClientModule
   ],
   providers: [NbSidebarService, NbMenuService],
   bootstrap: [AppComponent]
