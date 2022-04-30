@@ -25,6 +25,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {AboutComponent} from './components/about/about.component';
 import {HttpClientModule} from '@angular/common/http';
+import { HolidayItemComponent } from './components/holiday/components/holiday-item/holiday-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {HttpClientModule} from '@angular/common/http';
     MainPageComponent,
     SidebarComponent,
     HolidayComponent,
-    AboutComponent
+    AboutComponent,
+    HolidayItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+:host {
+  .holiday-item-card {
+    max-width: 450px;
+    max-height: 300px;
+  }
+
+  .holiday-item-body-description {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    margin: 0 0 20px;
+  }
+
+  .item {
+    border: 0.5px dotted #a9a9a9;
+  }
+
+  .item-image-description {
+    max-width: 225px;
+    max-height: 175px;
+    backgroundImageSize: cover;
+  }
+}

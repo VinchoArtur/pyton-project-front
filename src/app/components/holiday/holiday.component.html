@@ -1,11 +1,7 @@
 
 <div class="wrapper">
   <div *ngFor="let holiday of holidays">
-    <nb-card accent="info" class="tiny" (click)="testRestFunction()">
-      <nb-card-body>
-        {{value$}}
-      </nb-card-body>
-    </nb-card>
+    <app-holiday-item [holiday]="holiday"></app-holiday-item>
   </div>
 </div>
 
