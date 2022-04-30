@@ -16,6 +16,11 @@ export const holidayReducers = (
         ...state,
         holidays: action.payload
       };
+    case EHolidayActions.SetHolidayWrapped:
+      return {
+        ...state,
+        holidayWrapper: action.holidayWrapper
+      };
     default : {
       return state
     }

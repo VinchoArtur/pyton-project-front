@@ -1,9 +1,12 @@
 <nb-card accent="info" class="large holiday-item-card">
-  <nb-card-header>{{holiday.title}}</nb-card-header>
+  <nb-card-header>{{holiday?.title || "нет заголовка"}}</nb-card-header>
   <nb-card-body>
     <div class="holiday-item-body-description">
       <img [src]="imagePath" class="item-image-description"  alt="holiday image description">
-      <div class="item">{{holiday.description}}</div>
+      <div class="item">{{holiday?.description || "нет описания"}}</div>
     </div>
   </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="primary" (click)="moreInformation()">Подробнее</button>
+  </nb-card-footer>
 </nb-card>

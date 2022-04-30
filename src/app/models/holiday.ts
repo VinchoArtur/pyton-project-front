@@ -10,3 +10,10 @@ export interface IHolidayWrapper {
   description: string,
   imageDescription: string,
 }
+
+export interface IHolidayMoreInfo {
+  id: number,
+  name: string,
+  costHour: number,
+  description: string,
+}
