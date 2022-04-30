@@ -7,7 +7,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   NbButtonModule,
-  NbCardModule,
+  NbCardModule, NbDialogModule,
   NbLayoutModule,
   NbListModule,
   NbMenuModule,
@@ -26,6 +26,8 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {AboutComponent} from './components/about/about.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HolidayItemComponent } from './components/holiday/components/holiday-item/holiday-item.component';
+import { ItemModalsComponent } from './components/holiday/components/item-modals/item-modals.component';
+import {HttpService} from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { HolidayItemComponent } from './components/holiday/components/holiday-it
     SidebarComponent,
     HolidayComponent,
     AboutComponent,
-    HolidayItemComponent
+    HolidayItemComponent,
+    ItemModalsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +54,10 @@ import { HolidayItemComponent } from './components/holiday/components/holiday-it
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([HolidayEffects]),
     StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
-    HttpClientModule
+    HttpClientModule,
+    NbDialogModule.forRoot()
   ],
-  providers: [NbSidebarService, NbMenuService],
+  providers: [NbSidebarService, NbMenuService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
