@@ -2,17 +2,16 @@ import {Action} from '@ngrx/store';
 import {IHoliday, IHolidayWrapper} from '../../models/holiday';
 
 export enum EHolidayActions {
-  GetHoliday = '[GetHoliday] Get Holiday',
+  GetCurrentHoliday = '[GetCurrentHoliday] Get current holiday',
   GetHolidays = '[GetHolidays] Get Holidays',
   GetHolidaySuccess = '[GetHolidaySuccess] Get Holiday Success',
   GetHolidaysSuccess = '[GetHolidaysSuccess] Get Holidays Success',
-  SetHolidayWrapped = '[SetHolidayWrapped] Set Holiday Wrapper'
+  SetHolidayWrapper = '[SetHolidayWrapper] Set Holiday Wrapper'
 }
 
-export class GetHoliday implements Action {
-  public readonly type = EHolidayActions.GetHoliday;
-
-  constructor(public holidayId: number) {
+export class GetCurrentHoliday implements Action {
+  public readonly type = EHolidayActions.GetCurrentHoliday;
+  constructor(public payload: IHoliday) {
   }
 }
 
@@ -37,11 +36,11 @@ export class GetHolidaysSuccess implements Action {
   }
 }
 
-export class SetHolidayWrapped implements Action {
-  public readonly type = EHolidayActions.SetHolidayWrapped;
-  constructor(public holidayWrapper: IHolidayWrapper) {
+export class SetHolidayWrapper implements Action {
+  public readonly type = EHolidayActions.SetHolidayWrapper;
+  constructor(public holidayWrapper: IHoliday) {
   }
 }
 
-export type HolidayActions = GetHoliday | GetHolidays | GetHolidaySuccess | GetHolidaysSuccess | SetHolidayWrapped
+export type HolidayActions = GetCurrentHoliday | GetHolidays | GetHolidaySuccess | GetHolidaysSuccess | SetHolidayWrapper
 

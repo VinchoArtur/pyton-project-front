@@ -3,12 +3,10 @@ export interface IHoliday {
   name: string;
 }
 
-export interface IHolidayWrapper {
-  id: number,
-  name: string,
-  title: string,
-  description: string,
-  imageDescription: string,
+export interface IHolidayWrapper extends IHoliday{
+  title?: string,
+  description?: string,
+  imageDescription?: string,
 }
 
 export interface IHolidayMoreInfo {

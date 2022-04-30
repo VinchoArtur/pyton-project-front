@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {EHolidayActions, GetHoliday, GetHolidays, GetHolidaySuccess, SetHolidayWrapped} from '../actions/holiday.actions';
-import {map, switchMap, withLatestFrom} from 'rxjs/operators';
+import {EHolidayActions, GetCurrentHoliday, GetHolidays, GetHolidaySuccess, SetHolidayWrapper} from '../actions/holiday.actions';
+import {catchError, map, switchMap, withLatestFrom} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {IAppState} from '../state/app.state';
 import {select, Store} from '@ngrx/store';
 import {selectHolidaysList} from '../selectors/holidays.selector';
 import {HttpService} from '../../services/http.service';
-import {IHolidayWrapper} from '../../models/holiday';
-import {RouterAction} from '@ngrx/router-store';
+import {IHoliday} from '../../models/holiday';
 
 @Injectable()
 export class HolidayEffects {
@@ -24,14 +23,14 @@ export class HolidayEffects {
   );
 
   @Effect()
-  getHoliday$ = this._actions$.pipe(
-    ofType<GetHoliday>(EHolidayActions.GetHoliday),
-    switchMap(action => {return of(this.httpService.getHttpHoliday(action.holidayId))}),
-    map(holiday => {
-      holiday.subscribe(value => {
-        return this._store.dispatch(new SetHolidayWrapped(value as IHolidayWrapper))
-      }).unsubscribe();
-    })
+  getCurrentHoliday$ = this._actions$.pipe(
+    ofType<GetCurrentHoliday>(EHolidayActions.GetCurrentHoliday),
+    switchMap(action => {
+      return this.httpService.getHttpHoliday(action.payload.id);
+    }),
+    map(result => {
+      this._store.dispatch(new SetHolidayWrapper(result as IHoliday));
+    }),
   );
 
   constructor(
